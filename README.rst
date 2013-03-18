@@ -75,3 +75,13 @@ It will depend on your feedback ;)
 
 We might add some concurrency to speed up the parsing. However it will require more dependencies and will
 yield some synchronization problems in the visitor. Is it worth it?
+
+
+==-=-=-===-==-=-==-=--=----=-=-=-=--=
+
+Added Makefile for FreeBSD system.
+Waitman Gobble <ns@waitman.net>
+
+
+
+

@@ -1,21 +1,25 @@
 /*
+
 Copyright (c) 2012, Canal TP
-This is an example file, do whatever you want with it! (for example if you are in Paris, invite us for a beer)
 
-This shows the simplest way to use the osm.pbf reader. It just counts the number of objects in the file.
+This is an example file, do whatever you want with it! 
+(for example if you are in Paris, invite us for a beer)
 
-To build this file :
-g++ -O2 -o counter example_counter.cc -losmpbf -lprotobuf
+This shows the simplest way to use the osm.pbf reader. 
+It just counts the number of objects in the file.
 
-To run it:
+Usage:
 ./counter path_to_your_data.osm.pbf
+
 */
 
 #include "osmpbfreader.h"
 
 using namespace CanalTP;
 
-// We need to define a visitor with three methods that will be called while the file is read
+/* We need to define a visitor with three methods that i
+	will be called while the file is read */
+
 struct Counter {
     // Three integers count how many times each object type occurs
     int nodes;
@@ -54,3 +58,4 @@ int main(int argc, char** argv) {
      std::cout << "We read " << counter.nodes << " nodes, " << counter.ways << " ways and " << counter.relations << " relations" << std::endl;
      return 0;
 }
+

@@ -1,20 +1,32 @@
 /* 
+
 Copyright (c) 2012, Canal TP
-This is an example file, do whatever you want with it! (for example if you are in Paris, invite us for a beer)
 
-A slightly more advanced example : we want to use OSM data to extract a graph that represents the road network 
+This is an example file, do whatever you want with it! i
+(for example if you are in Paris, invite us for a beer)
 
-Build the example with (we're to lazy to make it compatible with older standards):
-g++ example_routing.cc -O2 -losmpbf -lprotobuf -std=c++0x -o routing 
-To run it:
+A slightly more advanced example : 
+we want to use OSM data to extract a graph that represents the road network 
+
+Usage:
 ./routing path_to_your_data.osm.pbf
+
+{{
+	update: Waitman Gobble <ns@waitman.net> 
+	change boost include / add namespace
+}}
+
 */
 
-#include <unordered_map>
+#include <boost/unordered_map.hpp>
 #include "osmpbfreader.h"
-using namespace CanalTP;
 
-// We keep every node and the how many times it is used in order to detect crossings
+using namespace CanalTP;
+using namespace boost::unordered;
+
+/* We keep every node and the how many times it is used 
+in order to detect crossings */
+
 struct Node {
     public:
         Node(double lon = 0, double lat = 0) : uses(0), lon_m(lon), lat_m(lat){}
@@ -26,7 +38,7 @@ struct Node {
 
 struct Routing {
     // Map that stores all the nodes read
-    std::unordered_map<uint64_t, Node> nodes;
+    unordered_map<uint64_t, Node> nodes;
 
     // Stores all the nodes of all the ways that are part of the road network
     std::vector< std::vector<uint64_t> > ways;
